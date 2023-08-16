@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+
+.cart-icon {
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  color: #333;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0; /* Changed from -250px */
+  width: 250px;
+  height: 100%;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
+}

@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+#  React Vehical Bidding App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  React Frontend
 
-## Available Scripts
+## Project structure
 
-In the project directory, you can run:
+-public
 
-### `npm start`
+-src
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ --component
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ --service
+ 
+ --redux
 
-### `npm test`
+  -app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  -test
+  
+  -index
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React-strap (Bootstrap) CSS framework for styling
+- React
+- Redux Toolkit
+- Eslint
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to run locally
 
-### `npm run eject`
+Clone or download project go to the Front-end
+Inside Front-end open node console
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Then type  `npm install`
+ Run `npm start` if you have node installed locally.
+ 
+Open your browse to `localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Rest api structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### vehecle api
 
-## Learn More
+Methods | Urls | Action	
+--- | --- | ---
+**GET** | `/vehicles` |  List All Vehicles
+**GET**| `/vehicles/:id` |  List single Vehicle
+**GET** | `/vehicles?details.brand=brand` | filter vehicle
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+	
+vehecle json	
+	{
+        "id": "3",
+        "name": "A3 Saloon",
+        "details": {
+            "currency": "LKR",
+            "price": 8000000,
+            "color": "#6EBF8B",
+            "brand": "Audi",
+            "manufactureYear": "2018",
+            "image": "https://cdn.imagin.studio/getImage?angle=01&billingTag=web&customer=carwow&make=audi&modelFamily=a3&modelVariant=saloon&modelYear=2022&paintDescription=solid---ibis-white+F3F1EF&paintId=76076&tailoring=carwow&width=800&zoomLevel=0&zoomType=fullscreen",
+            "description": "Premium saloon with the latest tech"
+        }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Tests 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Open Project
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Open node console run `npm test` to have jest start and watch the tests.
