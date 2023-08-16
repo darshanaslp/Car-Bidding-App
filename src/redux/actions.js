@@ -53,25 +53,32 @@ export const removeBidAction = (vehicleId) => ({
   payload: vehicleId,
 });
 
-export const filterVehiclesByBrandAction = (brand) => {
-  return {
-    type: FILTER_VEHICLES_BY_BRAND,
-    payload: brand,
-  };
-};
-
 // export const filterVehiclesByBrandAction = (brand) => {
-//   return (dispatch) => {
-//     filterVehiclesByBrand(brand)
-//       .then((response) => {
-//         dispatch({
-//           type: FILTER_VEHICLES_BY_BRAND,
-//           payload: response, // Assuming the API returns filtered vehicle data
-//         });
-//       })
-//       .catch((error) => {
-//         console.error('Error filtering vehicles by brand:', error);
-//       });
+//   return {
+//     type: FILTER_VEHICLES_BY_BRAND,
+//     payload: brand,
 //   };
 // };
+
+export const filterVehiclesByBrandAction = (brand) => {
+  if(brand === "All"){
+    return {
+          type: FILTER_VEHICLES_BY_BRAND,
+          payload: brand,
+        };
+  }else{
+    return (dispatch) => {
+      filterVehiclesByBrand(brand)
+        .then((response) => {
+          dispatch({
+            type: FILTER_VEHICLES_BY_BRAND,
+            payload: response, // Assuming the API returns filtered vehicle data
+          });
+        })
+        .catch((error) => {
+          console.error('Error filtering vehicles by brand:', error);
+        });
+    };
+  }
+};
 

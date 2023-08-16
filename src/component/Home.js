@@ -141,21 +141,22 @@ const Home = () => {
                     </div>
                 ))}
             </div>
+            <div className='pt-2'>
             <ReactPaginate
                 previousLabel={'Previous'}
                 nextLabel={'Next'}
                 breakLabel={'...'}
-                breakClassName={'page-item'}
-                breakLinkClassName={'page-link'}
                 containerClassName={'pagination'}
-                subContainerClassName={'pages pagination'}
                 activeClassName={'active'}
+                previousLinkClassName={'page-link'}
+                nextLinkClassName={'page-link'}
+                activeLinkClassName={'active'}
+                pageClassName={'page-link'}
                 pageCount={Math.ceil((filteredVehicles || vehicles).length / vehiclesPerPage)}
                 onPageChange={handlePageChange}
-                size={'lg'}
-                color={'primary'}
-                shape={'rounded'} 
+
             />
+            </div>
         </div>
     );
 };
