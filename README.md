@@ -55,15 +55,25 @@ Methods | Urls | Action
 vehecle json	
 	{
         "id": "3",
+
         "name": "A3 Saloon",
+
         "details": {
+
             "currency": "LKR",
+
             "price": 8000000,
+
             "color": "#6EBF8B",
+
             "brand": "Audi",
+
             "manufactureYear": "2018",
+
             "image": "https://cdn.imagin.studio/getImage?angle=01&billingTag=web&customer=carwow&make=audi&modelFamily=a3&modelVariant=saloon&modelYear=2022&paintDescription=solid---ibis-white+F3F1EF&paintId=76076&tailoring=carwow&width=800&zoomLevel=0&zoomType=fullscreen",
+
             "description": "Premium saloon with the latest tech"
+            
         }
 
 
