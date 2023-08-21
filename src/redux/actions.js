@@ -37,9 +37,9 @@ export const fetchVehiclesAction = () => {
   };
 };
 
-export const addBid = (vehicleId, brand, image, currency, amount) => ({
+export const addBid = (vehicleId, brand, name, image, currency, amount) => ({
   type: ADD_BID,
-  payload: { vehicleId, brand, image, currency, amount },
+  payload: { vehicleId, brand ,name, image, currency, amount },
 });
 
 

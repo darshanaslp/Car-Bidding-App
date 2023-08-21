@@ -6,9 +6,9 @@ import { toast } from 'react-toastify';
 import { addBid } from '../redux/actions';
 import { useNavigate } from 'react-router-dom';
 
-import BrandFilter from './BrandFilter';
-import VehicleCard from './VehicleCard';
-import VehiclePagination from './VehiclePagination';
+import BrandFilter from './reuseble/BrandFilter';
+import VehicleCard from './reuseble/VehicleCard';
+import VehiclePagination from './reuseble/VehiclePagination';
 
 const Home = () => {
     const vehicles = useSelector(state => state.vehicles);
@@ -71,7 +71,7 @@ const Home = () => {
             const vehicle = vehicles.find(v => v.id === vehicleId);
 
             // Dispatch the addBid action with necessary data
-            await dispatch(addBid(vehicleId, vehicle.name, vehicle.details.image, vehicle.details.currency, bidAmount));
+            await dispatch(addBid(vehicleId, vehicle.details.brand, vehicle.name, vehicle.details.image, vehicle.details.currency, bidAmount));
 
             resetForm();
 
@@ -129,7 +129,10 @@ const Home = () => {
                 </div>
             )}
             {/* Render pagination */}
-            <VehiclePagination pageCount={Math.ceil((filteredVehicles || vehicles).length / vehiclesPerPage)} handlePageChange={handlePageChange} />
+            <VehiclePagination 
+            pageCount={Math.ceil((filteredVehicles || vehicles).length / vehiclesPerPage)} 
+            handlePageChange={handlePageChange} 
+            />
         </div>
 
     );

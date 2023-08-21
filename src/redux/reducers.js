@@ -21,7 +21,7 @@ const vehiclesReducer = (state = initialState, action) => {
                 error: action.payload,
             };
         case ADD_BID: {
-            const { vehicleId, name, currency, image, amount } = action.payload;
+            const { vehicleId, brand ,name, currency, image, amount } = action.payload;
 
             // Basic validation check: Ensure the vehicle exists in the state
             const existingVehicle = state.vehicles.find(vehicle => vehicle.id === vehicleId);
@@ -39,6 +39,7 @@ const vehiclesReducer = (state = initialState, action) => {
             // If all checks pass, add the bid to the state
             const newBid = {
                 vehicleId,
+                brand,
                 name,
                 currency,
                 image,

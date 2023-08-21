@@ -22,6 +22,11 @@ const Bid = () => {
     toast.success(`remove bidd sucesfully`);
   };
 
+  //default image
+  const defaultBrandImages = {
+    Volkswagen: 'https://www.carlogos.org/logo/Volkswagen-logo-2000-1920x1080.png',
+};
+
   return (
     <div className="container mt-4">
     <h2>Bidding Information</h2>
@@ -29,7 +34,7 @@ const Bid = () => {
       {bids.map((bid) => (
         <div className="col-sm-3" key={bid.vehicleId}>
           <div className="card">
-          <img className="card-img-top" src={bid.image} alt={bid.brand} />
+          <img className="card-img-top" src={bid.image || defaultBrandImages[bid.brand]} alt={bid.brand} />
             <div className="card-body">
               <h5 className="card-title">{bid.name}</h5>
               <p className="card-text">Bid Amount: {bid.currency} {bid.amount}</p>
