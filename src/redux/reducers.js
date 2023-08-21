@@ -70,10 +70,6 @@ const vehiclesReducer = (state = initialState, action) => {
                 };
             }
             const filteredVehicles = brand;
-            // const filteredVehicles = state.vehicles.filter(vehicle => {
-            //     const vehicleBrand = vehicle.details.brand;
-            //     return vehicleBrand === brand;
-            // });
 
             return {
                 ...state,

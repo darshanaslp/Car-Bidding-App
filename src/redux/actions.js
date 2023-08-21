@@ -53,12 +53,6 @@ export const removeBidAction = (vehicleId) => ({
   payload: vehicleId,
 });
 
-// export const filterVehiclesByBrandAction = (brand) => {
-//   return {
-//     type: FILTER_VEHICLES_BY_BRAND,
-//     payload: brand,
-//   };
-// };
 
 export const filterVehiclesByBrandAction = (brand) => {
   if(brand === "All"){

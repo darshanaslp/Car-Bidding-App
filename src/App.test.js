@@ -1,28 +1,63 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import App from './App';
+import React from 'react';
+import { render, waitFor, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { fetchVehicles } from './service/vehicleService'; // Update with your service file
+import Home from './Home'; // Update with the correct path to your Home component
 
-const mock = new MockAdapter(axios);
+jest.mock('axios');
 
-// Import your mock vehicle data here
-const mockVehicleData = [
-  // ... your mock vehicle data here ...
-];
+describe('Home Component', () => {
+  const API_URL = 'http://157.245.61.32:7979';
 
-// Mock the API request to fetch vehicles
-mock.onGet('http://157.245.61.32:7979/vehicles').reply(200, mockVehicleData);
+  
+  it('fetches vehicles and displays them', async () => {
+    const mockVehicles = [
+      { id: 1, name: 'Vehicle 1', details: { /* ... */ } },
+      { id: 2, name: 'Vehicle 2', details: { /* ... */ } },
+      // ... more mock vehicle data
+    ];
 
-test('renders learn react link', async () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    axios.get.mockResolvedValue({ data: mockVehicles });
 
-  // Wait for the API request to be completed
-  await waitFor(() => {
-    // You can add more specific assertions here based on your app's behavior
-    // For example, check if a vehicle card is rendered
-    const vehicleCard = screen.getByText(/Vehicle Name/i);
-    expect(vehicleCard).toBeInTheDocument();
+    render(<Home />);
+
+    await waitFor(() => {
+      mockVehicles.forEach((vehicle) => {
+        expect(screen.getByText(vehicle.name)).toBeInTheDocument();
+      });
+    });
+  });
+
+  it('handles bidding form submission', async () => {
+    const mockVehicles = [
+      { id: 1, name: 'Vehicle 1', details: { /* ... */ } },
+      // ... more mock vehicle data
+    ];
+
+    axios.get.mockResolvedValue({ data: mockVehicles });
+
+    render(<Home />);
+
+    await waitFor(() => {
+      mockVehicles.forEach((vehicle) => {
+        expect(screen.getByText(vehicle.name)).toBeInTheDocument();
+      });
+    });
+
+    const bidAmount = 1000; // Example bid amount
+    const vehicleId = 1;    // Example vehicle ID
+
+    fireEvent.change(screen.getByPlaceholderText('Enter bid amount'), {
+      target: { value: bidAmount },
+    });
+
+    fireEvent.click(screen.getByText('Submit Bid'));
+
+    expect(axios.post).toHaveBeenCalledWith(
+      `${API_URL}/bids`,
+      { vehicleId, bidAmount }
+    );
+    expect(screen.getByPlaceholderText('Enter bid amount')).toHaveValue('');
   });
 });
